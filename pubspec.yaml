@@ -1,6 +1,6 @@
 name: multiple_images_picker
 description: Pick multiple images on iOS and Android.
-version: 1.0.0
+version: 1.0.1
 homepage: https://github.com/loic-hamdi/multiple_images_picker
 
 dependencies:
