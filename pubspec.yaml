@@ -1,0 +1,27 @@
+name: multiple_image_picker
+description: Pick multiple images on iOS and Android.
+version: 1.0.0
+homepage: https://github.com/loic-hamdi/multiple_image_picker
+
+dependencies:
+  flutter:
+    sdk: flutter
+  meta: ^1.1.5
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+# The following section is specific to Flutter.
+flutter:
+  plugin:
+    platforms:
+      android:
+        package: com.loichamdi.multipleimagepicker
+        pluginClass: MultipleImagePickerPlugin
+      ios:
+        pluginClass: MultipleImagePickerPlugin
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+  flutter: ">=1.12.13 <2.0.0"

@@ -1,0 +1,6 @@
+is_package: true
+package_name: multiple_image_picker
+maintainer_name: loic-hamdi
+maintainer_username: loic-hamdi
+package_description: Pick multiple images on iOS and Android.
+pub_package_name: multiple_image_picker

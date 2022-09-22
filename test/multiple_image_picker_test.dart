@@ -1,0 +1,222 @@
+import 'package:flutter/services.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:multiple_image_picker/multiple_image_picker.dart';
+
+void main() {
+  TestWidgetsFlutterBinding.ensureInitialized();
+  group('MultipleImagePicker', () {
+    const MethodChannel channel = MethodChannel('multiple_image_picker');
+
+    final List<MethodCall> log = <MethodCall>[];
+
+    setUp(() {
+      channel.setMockMethodCallHandler((MethodCall methodCall) async {
+        log.add(methodCall);
+        if (methodCall.method == 'requestOriginal' || methodCall.method == 'requestThumbnail') {
+          return true;
+        }
+        return [
+          {'identifier': 'SOME_ID_1'},
+          {'identifier': 'SOME_ID_2'}
+        ];
+      });
+
+      log.clear();
+    });
+
+    group('#pickImages', () {
+      test('passes max images argument correctly', () async {
+        await MultipleImagePicker.pickImages(maxImages: 5);
+
+        expect(
+          log,
+          <Matcher>[
+            isMethodCall('pickImages', arguments: <String, dynamic>{
+              'maxImages': 5,
+              'enableCamera': false,
+              'iosOptions': CupertinoOptions().toJson(),
+              'androidOptions': MaterialOptions().toJson(),
+              'selectedAssets': [],
+            }),
+          ],
+        );
+      });
+
+      test('passes selected assets correctly', () async {
+        Asset asset = Asset("test", "test.jpg", 100, 100);
+        await MultipleImagePicker.pickImages(
+          maxImages: 5,
+          selectedAssets: [asset],
+        );
+
+        expect(
+          log,
+          <Matcher>[
+            isMethodCall('pickImages', arguments: <String, dynamic>{
+              'maxImages': 5,
+              'enableCamera': false,
+              'iosOptions': CupertinoOptions().toJson(),
+              'androidOptions': MaterialOptions().toJson(),
+              'selectedAssets': [asset.identifier],
+            }),
+          ],
+        );
+      });
+
+      test('passes cuppertino options argument correctly', () async {
+        CupertinoOptions cupertinoOptions = CupertinoOptions(
+          backgroundColor: '#ffde05',
+          selectionCharacter: 'A',
+          selectionFillColor: '#004ed5',
+          selectionShadowColor: '#05e43d',
+          selectionStrokeColor: '#0f5e4D',
+          selectionTextColor: '#ffffff',
+        );
+
+        await MultipleImagePicker.pickImages(maxImages: 5, cupertinoOptions: cupertinoOptions);
+
+        expect(
+          log,
+          <Matcher>[
+            isMethodCall('pickImages', arguments: <String, dynamic>{
+              'maxImages': 5,
+              'enableCamera': false,
+              'iosOptions': cupertinoOptions.toJson(),
+              'androidOptions': MaterialOptions().toJson(),
+              'selectedAssets': [],
+            }),
+          ],
+        );
+      });
+
+      test('passes meterial options argument correctly', () async {
+        MaterialOptions materialOptions = MaterialOptions(
+          actionBarTitle: "Aciton bar",
+          allViewTitle: "All view title",
+          actionBarColor: "#aaaaaa",
+          actionBarTitleColor: "#bbbbbb",
+          lightStatusBar: false,
+          statusBarColor: '#abcdef',
+          startInAllView: true,
+          useDetailsView: true,
+          selectCircleStrokeColor: "#ffffff",
+        );
+        await MultipleImagePicker.pickImages(maxImages: 5, materialOptions: materialOptions);
+
+        expect(
+          log,
+          <Matcher>[
+            isMethodCall('pickImages', arguments: <String, dynamic>{
+              'maxImages': 5,
+              'enableCamera': false,
+              'androidOptions': materialOptions.toJson(),
+              'iosOptions': CupertinoOptions().toJson(),
+              'selectedAssets': [],
+            }),
+          ],
+        );
+      });
+
+      test('does not accept a negative images count', () {
+        expect(
+          MultipleImagePicker.pickImages(maxImages: -10),
+          throwsArgumentError,
+        );
+      });
+
+      test('throws correct exception on cancel', () {
+        channel.setMockMethodCallHandler((MethodCall methodCall) async {
+          throw PlatformException(code: 'CANCELLED', message: 'Some error');
+        });
+
+        expect(
+          () => MultipleImagePicker.pickImages(maxImages: 10),
+          throwsA(isA<NoImagesSelectedException>()),
+        );
+      });
+
+      test('throws correct exception when permission denied', () {
+        channel.setMockMethodCallHandler((MethodCall methodCall) async {
+          throw PlatformException(code: 'PERMISSION_DENIED', message: 'Some error');
+        });
+
+        expect(
+          () => MultipleImagePicker.pickImages(maxImages: 10),
+          throwsA(isA<PermissionDeniedException>()),
+        );
+      });
+
+      test('throws correct exception when permission permanently denied', () {
+        channel.setMockMethodCallHandler((MethodCall methodCall) async {
+          throw PlatformException(code: 'PERMISSION_PERMANENTLY_DENIED', message: 'Some error');
+        });
+
+        expect(
+          () => MultipleImagePicker.pickImages(maxImages: 10),
+          throwsA(isA<PermissionPermanentlyDeniedExeption>()),
+        );
+      });
+    });
+
+    test('requestOriginal accepts correct params', () async {
+      const String id = 'SOME_ID';
+      const int quality = 100;
+      await MultipleImagePicker.requestOriginal(id, quality);
+
+      expect(
+        log,
+        <Matcher>[
+          isMethodCall('requestOriginal', arguments: <String, dynamic>{
+            'identifier': id,
+            'quality': quality,
+          }),
+        ],
+      );
+    });
+
+    group('#requestThumbnail', () {
+      const String id = 'SOME_ID';
+      const int width = 100;
+      const int height = 200;
+      const int quality = 100;
+      test('accepts correct params', () async {
+        await MultipleImagePicker.requestThumbnail(id, width, height, quality);
+
+        expect(
+          log,
+          <Matcher>[
+            isMethodCall('requestThumbnail', arguments: <String, dynamic>{
+              'identifier': id,
+              'width': width,
+              'height': height,
+              'quality': quality,
+            }),
+          ],
+        );
+      });
+
+      test('does not accept a negative width or height', () {
+        expect(
+          MultipleImagePicker.requestThumbnail(id, -100, height, quality),
+          throwsArgumentError,
+        );
+
+        expect(
+          MultipleImagePicker.requestThumbnail(id, width, -100, quality),
+          throwsArgumentError,
+        );
+      });
+      test('does not accept invalid quality', () {
+        expect(
+          MultipleImagePicker.requestThumbnail(id, -width, height, -100),
+          throwsArgumentError,
+        );
+
+        expect(
+          MultipleImagePicker.requestThumbnail(id, width, height, 200),
+          throwsArgumentError,
+        );
+      });
+    });
+  });
+}
