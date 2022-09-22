@@ -6,7 +6,7 @@ homepage: https://github.com/loic-hamdi/multiple_image_picker
 dependencies:
   flutter:
     sdk: flutter
-  meta: ^1.1.5
+  meta: ^1.8.0
 
 dev_dependencies:
   flutter_test:
@@ -23,5 +23,7 @@ flutter:
         pluginClass: MultipleImagePickerPlugin
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
-  flutter: ">=1.12.13"
+  sdk: '>=2.18.1 <3.0.0'
+  flutter: ">=1.17.0"
+  # sdk: ">=2.12.0 <3.0.0"
+  # flutter: ">=1.12.13"
