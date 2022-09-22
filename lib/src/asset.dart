@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/services.dart';
-import 'package:multiple_image_picker/multiple_image_picker.dart';
+import 'package:multiple_images_picker/multiple_images_picker.dart';
 
 class Asset {
   /// The resource identifier
@@ -25,7 +25,7 @@ class Asset {
 
   /// The BinaryChannel name this asset is listening on.
   String get _channel {
-    return 'multiple_image_picker/image/$_identifier';
+    return 'multiple_images_picker/image/$_identifier';
   }
 
   String get _thumbChannel => '$_channel.thumb';
@@ -94,7 +94,7 @@ class Asset {
       return message;
     });
 
-    await MultipleImagePicker.requestThumbnail(_identifier, width, height, quality);
+    await MultipleImagesPicker.requestThumbnail(_identifier, width, height, quality);
     return completer.future as FutureOr<ByteData>;
   }
 
@@ -119,13 +119,13 @@ class Asset {
       return message;
     });
 
-    await MultipleImagePicker.requestOriginal(_identifier, quality);
+    await MultipleImagesPicker.requestOriginal(_identifier, quality);
     return completer.future as FutureOr<ByteData>;
   }
 
   /// Requests the original image meta data
   Future<Metadata> get metadata {
-    return MultipleImagePicker.requestMetadata(_identifier);
+    return MultipleImagesPicker.requestMetadata(_identifier);
   }
 
   @Deprecated(

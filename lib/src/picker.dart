@@ -2,10 +2,10 @@ import 'dart:async';
 import 'dart:io' show Platform;
 
 import 'package:flutter/services.dart';
-import 'package:multiple_image_picker/multiple_image_picker.dart';
+import 'package:multiple_images_picker/multiple_images_picker.dart';
 
-class MultipleImagePicker {
-  static const MethodChannel _channel = const MethodChannel('multiple_image_picker');
+class MultipleImagesPicker {
+  static const MethodChannel _channel = const MethodChannel('multiple_images_picker');
 
   /// Invokes the multiple image picker selector.
   ///

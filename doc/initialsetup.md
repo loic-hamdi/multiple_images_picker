@@ -25,4 +25,4 @@ You need to request those permissions in AndroidManifest.xml in order the plugin
 <uses-permission android:name="android.permission.CAMERA" />
 ```
 
-For example code usage, please see [here](https://github.com/loic-hamdi/multiple_image_picker/blob/master/example/lib/main.dart)
+For example code usage, please see [here](https://github.com/loic-hamdi/multiple_images_picker/blob/master/example/lib/main.dart)

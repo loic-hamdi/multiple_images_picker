@@ -12,12 +12,12 @@ Currently the plugin throws one of the following exceptions:
 You can handle any of those like this:
 
 ```dart
-    import 'package:multiple_image_picker/multiple_image_picker.dart';
+    import 'package:multiple_images_picker/multiple_images_picker.dart';
 
     ....
 
     try {
-      resultList = await MultipleImagePicker.pickImages(
+      resultList = await MultipleImagesPicker.pickImages(
         maxImages: 300,
       );
     } on NoImagesSelectedException catch (e) {

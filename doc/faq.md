@@ -10,7 +10,7 @@ That's not an easy task when we speak for cross platform compatibility. For exam
 
 You can see how one of the core Flutter plugins - the single [image_picker](https://pub.dartlang.org/packages/image_picker), approaches and solves this problem in order to return file paths: it just copies the selected image content to the `tmp` folder and returns the file path from there. Now that works ok when you pick a single image.
 
-But since with the `multiple_image_picker` you can pick literally thousands of images on one go, this is not possible.
+But since with the `multiple_images_picker` you can pick literally thousands of images on one go, this is not possible.
 
 Another issue on iOS is that starting from iOS 11 all images taken by the camera are stored in [HEIC](https://en.wikipedia.org/wiki/High_Efficiency_Image_File_Format) format. Unfortunately, Flutter still doesn't have codecs to display HEIC images out-of-the-box in with the image widget.
 

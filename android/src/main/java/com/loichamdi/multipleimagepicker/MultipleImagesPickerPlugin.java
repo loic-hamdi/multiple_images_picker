@@ -1,4 +1,4 @@
-package com.loichamdi.multipleimagepicker;
+package com.loichamdi.multipleimagespicker;
 
 import android.app.Activity;
 import android.content.Context;
@@ -51,15 +51,15 @@ import static android.media.ThumbnailUtils.OPTIONS_RECYCLE_INPUT;
 
 
 /**
- * MultipleImagePickerPlugin
+ * MultipleImagesPickerPlugin
  */
-public class MultipleImagePickerPlugin implements
+public class MultipleImagesPickerPlugin implements
         FlutterPlugin,
         ActivityAware,
         MethodCallHandler,
         PluginRegistry.ActivityResultListener {
 
-    private static final String CHANNEL_NAME = "multiple_image_picker";
+    private static final String CHANNEL_NAME = "multiple_images_picker";
     private static final String REQUEST_THUMBNAIL = "requestThumbnail";
     private static final String REQUEST_ORIGINAL = "requestOriginal";
     private static final String REQUEST_METADATA = "requestMetadata";
@@ -81,7 +81,7 @@ public class MultipleImagePickerPlugin implements
      * Plugin registration.
      */
     public static void registerWith(Registrar registrar) {
-        MultipleImagePickerPlugin instance = new MultipleImagePickerPlugin();
+        MultipleImagesPickerPlugin instance = new MultipleImagesPickerPlugin();
         instance.onAttachedToEngine(registrar.context(), registrar.messenger(), registrar.activity());
         registrar.addActivityResultListener(instance);
     }
@@ -189,7 +189,7 @@ public class MultipleImagePickerPlugin implements
         protected void onPostExecute(ByteBuffer buffer) {
             super.onPostExecute(buffer);
             if (buffer != null) {
-                this.messenger.send("multiple_image_picker/image/" + this.identifier + ".thumb", buffer);
+                this.messenger.send("multiple_images_picker/image/" + this.identifier + ".thumb", buffer);
                 buffer.clear();
             }
         }
@@ -246,7 +246,7 @@ public class MultipleImagePickerPlugin implements
         protected void onPostExecute(ByteBuffer buffer) {
             super.onPostExecute(buffer);     
             if(buffer != null) {
-                this.messenger.send("multiple_image_picker/image/" + this.identifier + ".original", buffer);
+                this.messenger.send("multiple_images_picker/image/" + this.identifier + ".original", buffer);
                 buffer.clear();
             }
         }
@@ -541,7 +541,7 @@ public class MultipleImagePickerPlugin implements
             selectedUris.add(Uri.parse(path));
         }
 
-        FishBunCreator fishBun = FishBun.with(MultipleImagePickerPlugin.this.activity)
+        FishBunCreator fishBun = FishBun.with(MultipleImagesPickerPlugin.this.activity)
                 .setImageAdapter(new GlideAdapter())
                 .setMaxCount(maxImages)
                 .setCamera(enableCamera)

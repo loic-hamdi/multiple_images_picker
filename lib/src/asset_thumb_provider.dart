@@ -4,7 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'dart:ui' as ui show instantiateImageCodec, Codec;
 
-import 'package:multiple_image_picker/multiple_image_picker.dart';
+import 'package:multiple_images_picker/multiple_images_picker.dart';
 
 class AssetThumbImageProvider extends ImageProvider<AssetThumbImageProvider> {
   final Asset asset;

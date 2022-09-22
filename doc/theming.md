@@ -3,7 +3,7 @@
 You can customize different parts of the gallery picker. To do so, you can simply pass `materialOptions` param in the `pickImages` call.
 
 ```dart
-List resultList = await MultipleImagePicker.pickImages(
+List resultList = await MultipleImagesPicker.pickImages(
     maxImages: 3,
     materialOptions: MaterialOptions(
         actionBarTitle: "Action bar",
@@ -45,7 +45,7 @@ You can customize different parts of the gallery picker. To do so, you can simpl
 ?> The iOS plugin uses System Localizations, meaning it will automatically detect the device language and provide appropriate translations. You don't have to handle that manually like on Android.
 
 ```dart
-List resultList = await MultipleImagePicker.pickImages(
+List resultList = await MultipleImagesPicker.pickImages(
     maxImages: 3,
     cupertinoOptions: CupertinoOptions(
       selectionFillColor: "#ff11ab",

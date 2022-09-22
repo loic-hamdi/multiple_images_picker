@@ -1,16 +1,16 @@
 # Getting Started
 
-?> In order to start using multiple_image_picker you must have the [Dart SDK](https://www.dartlang.org/install) installed on your machine.
+?> In order to start using multiple_images_picker you must have the [Dart SDK](https://www.dartlang.org/install) installed on your machine.
 
 ## Installation
 
-The first thing we need to do is add the multiple_image_picker package to our `pubspec.yaml` as a dependency.
+The first thing we need to do is add the multiple_images_picker package to our `pubspec.yaml` as a dependency.
 
 !> This plugin was migrated from using the deprecated Android Support Library to [AndroidX](https://developer.android.com/jetpack/androidx/). If your project was migrated to use it as well you should install version 4.X.X of the plugin. If you are using the old project structure please use version 2.4.11
 
 ```yaml
 dependencies:
-  multiple_image_picker: ^1.0.0
+  multiple_images_picker: ^1.0.0
 ```
 
 Next we need to install the plugin.
@@ -21,8 +21,8 @@ Next we need to install the plugin.
 
 ## Import
 
-Now that we have successfully installed multiple_image_picker, we can create our `main.dart` and import multiple_image_picker.
+Now that we have successfully installed multiple_images_picker, we can create our `main.dart` and import multiple_images_picker.
 
 ```dart
-import 'package:multiple_image_picker/multiple_image_picker.dart';
+import 'package:multiple_images_picker/multiple_images_picker.dart';
 ```

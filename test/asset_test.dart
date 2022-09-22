@@ -1,11 +1,11 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:multiple_image_picker/multiple_image_picker.dart';
+import 'package:multiple_images_picker/multiple_images_picker.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
   group('Asset', () {
-    const MethodChannel channel = MethodChannel('multiple_image_picker');
+    const MethodChannel channel = MethodChannel('multiple_images_picker');
 
     final List<MethodCall> log = <MethodCall>[];
 

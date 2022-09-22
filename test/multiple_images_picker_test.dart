@@ -1,11 +1,11 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:multiple_image_picker/multiple_image_picker.dart';
+import 'package:multiple_images_picker/multiple_images_picker.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
-  group('MultipleImagePicker', () {
-    const MethodChannel channel = MethodChannel('multiple_image_picker');
+  group('MultipleImagesPicker', () {
+    const MethodChannel channel = MethodChannel('multiple_images_picker');
 
     final List<MethodCall> log = <MethodCall>[];
 
@@ -26,7 +26,7 @@ void main() {
 
     group('#pickImages', () {
       test('passes max images argument correctly', () async {
-        await MultipleImagePicker.pickImages(maxImages: 5);
+        await MultipleImagesPicker.pickImages(maxImages: 5);
 
         expect(
           log,
@@ -44,7 +44,7 @@ void main() {
 
       test('passes selected assets correctly', () async {
         Asset asset = Asset("test", "test.jpg", 100, 100);
-        await MultipleImagePicker.pickImages(
+        await MultipleImagesPicker.pickImages(
           maxImages: 5,
           selectedAssets: [asset],
         );
@@ -73,7 +73,7 @@ void main() {
           selectionTextColor: '#ffffff',
         );
 
-        await MultipleImagePicker.pickImages(maxImages: 5, cupertinoOptions: cupertinoOptions);
+        await MultipleImagesPicker.pickImages(maxImages: 5, cupertinoOptions: cupertinoOptions);
 
         expect(
           log,
@@ -101,7 +101,7 @@ void main() {
           useDetailsView: true,
           selectCircleStrokeColor: "#ffffff",
         );
-        await MultipleImagePicker.pickImages(maxImages: 5, materialOptions: materialOptions);
+        await MultipleImagesPicker.pickImages(maxImages: 5, materialOptions: materialOptions);
 
         expect(
           log,
@@ -119,7 +119,7 @@ void main() {
 
       test('does not accept a negative images count', () {
         expect(
-          MultipleImagePicker.pickImages(maxImages: -10),
+          MultipleImagesPicker.pickImages(maxImages: -10),
           throwsArgumentError,
         );
       });
@@ -130,7 +130,7 @@ void main() {
         });
 
         expect(
-          () => MultipleImagePicker.pickImages(maxImages: 10),
+          () => MultipleImagesPicker.pickImages(maxImages: 10),
           throwsA(isA<NoImagesSelectedException>()),
         );
       });
@@ -141,7 +141,7 @@ void main() {
         });
 
         expect(
-          () => MultipleImagePicker.pickImages(maxImages: 10),
+          () => MultipleImagesPicker.pickImages(maxImages: 10),
           throwsA(isA<PermissionDeniedException>()),
         );
       });
@@ -152,7 +152,7 @@ void main() {
         });
 
         expect(
-          () => MultipleImagePicker.pickImages(maxImages: 10),
+          () => MultipleImagesPicker.pickImages(maxImages: 10),
           throwsA(isA<PermissionPermanentlyDeniedExeption>()),
         );
       });
@@ -161,7 +161,7 @@ void main() {
     test('requestOriginal accepts correct params', () async {
       const String id = 'SOME_ID';
       const int quality = 100;
-      await MultipleImagePicker.requestOriginal(id, quality);
+      await MultipleImagesPicker.requestOriginal(id, quality);
 
       expect(
         log,
@@ -180,7 +180,7 @@ void main() {
       const int height = 200;
       const int quality = 100;
       test('accepts correct params', () async {
-        await MultipleImagePicker.requestThumbnail(id, width, height, quality);
+        await MultipleImagesPicker.requestThumbnail(id, width, height, quality);
 
         expect(
           log,
@@ -197,23 +197,23 @@ void main() {
 
       test('does not accept a negative width or height', () {
         expect(
-          MultipleImagePicker.requestThumbnail(id, -100, height, quality),
+          MultipleImagesPicker.requestThumbnail(id, -100, height, quality),
           throwsArgumentError,
         );
 
         expect(
-          MultipleImagePicker.requestThumbnail(id, width, -100, quality),
+          MultipleImagesPicker.requestThumbnail(id, width, -100, quality),
           throwsArgumentError,
         );
       });
       test('does not accept invalid quality', () {
         expect(
-          MultipleImagePicker.requestThumbnail(id, -width, height, -100),
+          MultipleImagesPicker.requestThumbnail(id, -width, height, -100),
           throwsArgumentError,
         );
 
         expect(
-          MultipleImagePicker.requestThumbnail(id, width, height, 200),
+          MultipleImagesPicker.requestThumbnail(id, width, height, 200),
           throwsArgumentError,
         );
       });

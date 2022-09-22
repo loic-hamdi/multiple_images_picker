@@ -1,6 +1,6 @@
-# multiple_image_picker_example
+# multiple_images_picker_example
 
-Demonstrates how to use the multiple_image_picker plugin.
+Demonstrates how to use the multiple_images_picker plugin.
 
 ## Getting Started
 

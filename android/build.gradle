@@ -1,4 +1,4 @@
-group 'com.loichamdi.multipleimagepicker'
+group 'com.loichamdi.multipleimagespicker'
 version '1.0.00'
 
 buildscript {

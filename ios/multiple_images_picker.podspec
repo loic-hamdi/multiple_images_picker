@@ -2,13 +2,13 @@
 # To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html
 #
 Pod::Spec.new do |s|
-  s.name             = 'multiple_image_picker'
+  s.name             = 'multiple_images_picker'
   s.version          = '1.0.00'
   s.summary          = 'Multiple image picker'
   s.description      = <<-DESC
 A new flutter plugin project.
                        DESC
-  s.homepage         = 'https://github.com/loic-hamdi/multiple_image_picker'
+  s.homepage         = 'https://github.com/loic-hamdi/multiple_images_picker'
   s.license          = { :file => '../LICENSE' }
   s.author           = { 'loic-hamdi' => 'loic.hamdi@gmail.com' }
   s.source           = { :path => '.' }

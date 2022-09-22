@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a href="https://github.com/loic-hamdi/multiple_image_picker"><img src="https://github.com/loic-hamdi/multiple_image_picker/raw/master/screenshots/hero.png" alt="Flutter Multiple Image Picker" width="200"></a>
+  <a href="https://github.com/loic-hamdi/multiple_images_picker"><img src="https://github.com/loic-hamdi/multiple_images_picker/raw/master/screenshots/hero.png" alt="Flutter Multiple Images Picker" width="200"></a>
   <br>
   Flutter Multiple Image Picker
   <br>
@@ -14,5 +14,5 @@ Flutter plugin to pick multiple image on iOS and Android.
 - Thumbnail support
 - Highly customizable
 
-[GitHub](https://github.com/loic-hamdi/multiple_image_picker)
+[GitHub](https://github.com/loic-hamdi/multiple_images_picker)
 [Get Started](gettingstarted.md)

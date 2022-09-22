@@ -1,4 +1,4 @@
-package com.loichamdi.multipleimagepicker;
+package com.loichamdi.multipleimagespicker;
 
 import android.annotation.SuppressLint;
 import android.content.ContentUris;

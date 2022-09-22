@@ -34,7 +34,7 @@ fileprivate extension UIViewController {
     }
 }
 
-public class SwiftMultipleImagePickerPlugin: NSObject, FlutterPlugin {
+public class SwiftMultipleImagesPickerPlugin: NSObject, FlutterPlugin {
     var imagesResult: FlutterResult?
     var messenger: FlutterBinaryMessenger;
 
@@ -46,9 +46,9 @@ public class SwiftMultipleImagePickerPlugin: NSObject, FlutterPlugin {
     }
 
     public static func register(with registrar: FlutterPluginRegistrar) {
-        let channel = FlutterMethodChannel(name: "multiple_image_picker", binaryMessenger: registrar.messenger())
+        let channel = FlutterMethodChannel(name: "multiple_images_picker", binaryMessenger: registrar.messenger())
 
-        let instance = SwiftMultipleImagePickerPlugin.init(messenger: registrar.messenger())
+        let instance = SwiftMultipleImagesPickerPlugin.init(messenger: registrar.messenger())
         registrar.addMethodCallDelegate(instance, channel: channel)
     }
 
@@ -197,7 +197,7 @@ public class SwiftMultipleImagePickerPlugin: NSObject, FlutterPlugin {
                     options: options,
                     resultHandler: {
                         (image: UIImage?, info) in
-                        self.messenger.send(onChannel: "multiple_image_picker/image/" + identifier + ".thumb", message: image?.jpegData(compressionQuality: CGFloat(compressionQuality)))
+                        self.messenger.send(onChannel: "multiple_images_picker/image/" + identifier + ".thumb", message: image?.jpegData(compressionQuality: CGFloat(compressionQuality)))
                         })
 
                 if(PHInvalidImageRequestID != ID) {
@@ -231,7 +231,7 @@ public class SwiftMultipleImagePickerPlugin: NSObject, FlutterPlugin {
                     options: options,
                     resultHandler: {
                         (image: UIImage?, info) in
-                        self.messenger.send(onChannel: "multiple_image_picker/image/" + identifier + ".original", message: image!.jpegData(compressionQuality: CGFloat(compressionQuality)))
+                        self.messenger.send(onChannel: "multiple_images_picker/image/" + identifier + ".original", message: image!.jpegData(compressionQuality: CGFloat(compressionQuality)))
                 })
 
                 if(PHInvalidImageRequestID != ID) {

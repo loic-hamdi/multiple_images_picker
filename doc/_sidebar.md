@@ -23,7 +23,7 @@
 - [Upgrading](upgrading.md)
 
 - API Reference
-  - [Asset](https://pub.dartlang.org/documentation/multiple_image_picker/latest/multiple_image_picker/Asset-class.html)
-  - [Metadata](https://pub.dartlang.org/documentation/multiple_image_picker/latest/multiple_image_picker/Metadata-class.html)
-  - [MultipleImagePicker](https://pub.dartlang.org/documentation/multiple_image_picker/latest/multiple_image_picker/MultipleImagePicker-class.html)
-  - [multiple_image_picker](https://pub.dartlang.org/documentation/multiple_image_picker/latest/multiple_image_picker/multiple_image_picker-library.html)
+  - [Asset](https://pub.dartlang.org/documentation/multiple_images_picker/latest/multiple_images_picker/Asset-class.html)
+  - [Metadata](https://pub.dartlang.org/documentation/multiple_images_picker/latest/multiple_images_picker/Metadata-class.html)
+  - [MultipleImagesPicker](https://pub.dartlang.org/documentation/multiple_images_picker/latest/multiple_images_picker/MultipleImagesPicker-class.html)
+  - [multiple_images_picker](https://pub.dartlang.org/documentation/multiple_images_picker/latest/multiple_images_picker/multiple_images_picker-library.html)
