@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a href="https://github.com/loic-hamdi/multiple_images_picker"><img src="https://github.com/loic-hamdi/multiple_images_picker/raw/master/screenshots/hero.png" alt="Flutter Multiple Images Picker" width="200"></a>
+  <a href="https://github.com/loic-hamdi/multiple_images_picker"><img src="https://github.com/loic-hamdi/multiple_images_picker/raw/master/screenshots/hero.png" alt="Multiple Images Picker" width="200"></a>
   <br>
   Flutter Multiple Image Picker
   <br>
